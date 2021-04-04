@@ -51,7 +51,7 @@ async function tracert(url) {
     console.log(ex);
   }
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     (function waitForTracert() {
       if (flag) return resolve(data);
       setTimeout(waitForTracert, 30);
@@ -59,26 +59,29 @@ async function tracert(url) {
   });
 }
 
-app.post("/", async function (req, res) {
+app.post("/domain", async function(req, res) {
   const urlValue = req.body.url;
 
-  let data = {
-    domainDetails: {},
-    traceRoute: {},
-  };
+  let domainDetails = {};
 
   const API =
     "http://api.ipstack.com/" + urlValue + "?access_key=" + process.env.API_KEY;
 
   const domain = await axios.get(API);
-  data.domainDetails = domain.data;
+  domainDetails = domain.data;
 
-  data.traceRoute = await tracert(urlValue);
-
-  console.log(data);
-  res.send(data);
+  res.send(domainDetails);
 });
 
-app.listen(PORT, function () {
+app.post("/route", async function(req, res) {
+  let traceRoute = {};
+  const urlValue = req.body.url;
+  traceRoute = await tracert(urlValue);
+
+  console.log(traceRoute);
+  res.send(traceRoute);
+});
+
+app.listen(PORT, function() {
   console.log("App is running successfully on port 3000!");
 });
