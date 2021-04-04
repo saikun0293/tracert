@@ -40,6 +40,8 @@ npm run server
 npm run serve
 ```
 
+- For the API key go to [IP Stack](https://ipstack.com/) and register and replace it in process.env.API_KEY in the index.js folder
+
 - Server ⇒ [http://localhost:3000/](http://localhost:3000/)
 - Web Page ⇒ [http://localhost:8080/](http://localhost:8080/)
 
