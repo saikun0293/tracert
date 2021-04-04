@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Tracert Browser</title>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <input type="url" name="url" id="url" />
+        <button id="submit" type="submit">Submit URL</button>
+      </form>
+    </div>
+    <script>
+      const URL = "http://localhost:3000/";
+
+      async function onSubmit(event) {
+        event.preventDefault();
+        const urlValue = url.value;
+
+        try {
+          const result = await axios.post(URL, { url: urlValue });
+          console.log(result);
+          updateUI(result);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      //add event listeners
+      const submit = document.getElementById("submit");
+      const url = document.getElementById("url");
+
+      submit.addEventListener("click", onSubmit);
+    </script>
+  </body>
+</html>
