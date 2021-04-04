@@ -4,38 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/styles/styles.css" />
     <title>Tracert Browser</title>
   </head>
   <body>
+    <img class="bg" src="./images/cloud-bg.jpg" alt="bg" />
     <div class="container">
-      <form>
-        <input type="url" name="url" id="url" />
+      <div class="main-title">Tracert Browser</div>
+      <form class="input-form">
+        <input type="text" name="url" id="url" autocomplete="off" />
         <button id="submit" type="submit">Submit URL</button>
       </form>
+      <div class="info-container">
+        <div class="title">Domain Details</div>
+        <div class="destination-details"></div>
+        <div class="title">Routing</div>
+        <div class="routing"></div>
+        <div class="link-container">
+          <a href="" id="link">Link to the URL</a>
+        </div>
+      </div>
     </div>
-    <script>
-      const URL = "http://localhost:3000/";
-
-      async function onSubmit(event) {
-        event.preventDefault();
-        const urlValue = url.value;
-
-        try {
-          const result = await axios.post(URL, { url: urlValue });
-          console.log(result);
-          updateUI(result);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      //add event listeners
-      const submit = document.getElementById("submit");
-      const url = document.getElementById("url");
-
-      submit.addEventListener("click", onSubmit);
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>

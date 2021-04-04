@@ -1,3 +1,4 @@
+//SERVER
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
@@ -16,11 +17,12 @@ app.use(
 );
 
 async function tracert(url) {
+  let flag = false;
   const data = {
     pid: "",
     destination: "",
     hop: [],
-    close: "",
+    code: null,
   };
 
   const tracer = new Traceroute();
@@ -40,7 +42,7 @@ async function tracert(url) {
     .on("close", (code) => {
       console.log(`close: code ${code}`);
       data.code = code;
-      console.log(data);
+      flag = true;
     });
 
   try {
@@ -49,10 +51,11 @@ async function tracert(url) {
     console.log(ex);
   }
 
-  return new Promise((resolve) => {
-    setTimeout(function () {
-      resolve(data);
-    }, 10000);
+  return new Promise((resolve, reject) => {
+    (function waitForTracert() {
+      if (flag) return resolve(data);
+      setTimeout(waitForTracert, 30);
+    })();
   });
 }
 

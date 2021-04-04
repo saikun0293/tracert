@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;700&display=swap");
+
+body {
+  font-family: "Montserrat";
+}
+
+.main-title {
+  font-family: Montserrat;
+  font-size: 50px;
+  font-weight: 700;
+  color: darkturquoise;
+  text-align: center;
+  text-decoration-line: overline;
+}
+
+.input-form {
+  width: 700px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+#url {
+  padding: 10px 15px;
+  width: 400px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-family: "Montserrat";
+}
+
+#submit,
+#link {
+  border: none;
+  padding: 15px 15px;
+  background: darkturquoise;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-family: "Montserrat";
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+#submit:hover {
+  background-color: white;
+  cursor: pointer;
+  color: darkturquoise;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate(0, 12px);
+  z-index: -1;
+}
+
+.destination-details,
+.routing {
+  width: 50%;
+  height: 40%;
+  background: rgba(0, 0, 0, 0.05);
+  margin: 10px 0;
+  border-radius: 10px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.info-container {
+  width: 60%;
+  margin: 0 auto;
+  backdrop-filter: blur(15px);
+  height: 76vh;
+  border-radius: 20px;
+  padding: 2rem;
+  box-sizing: border-box;
+  border: 1px solid white;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.destination-details::-webkit-scrollbar,
+.routing::-webkit-scrollbar {
+  display: none;
+}
+
+.link-container {
+  text-align: center;
+  padding: 15px;
+}
